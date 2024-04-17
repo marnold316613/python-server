@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 app= Flask(__name__)
 app.debug=True
@@ -15,6 +15,9 @@ def hello_world():
 def favicon():
   pass
 
+@app.route('/<username>')
+def hello_world2(username=None):
+  return render_template('index.html',name=username)
 
 if __name__=="__main__":
   app.run()
